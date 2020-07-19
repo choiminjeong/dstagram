@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="/static/bootstrap.min.css" /> -->
+  <link rel="stylesheet" href="/static/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    {% block header %}
+    {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <a class="navbar-brand" href="#">DJANGOSTGRAM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if request.session.user %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/post">타임라인 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="user/logout">로그아웃</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/upload" tabindex="-1" aria-disabled="true">글작성</a>
+          </li>
+        </ul>
+
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/post">타임라인 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/register">회원가입</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/user/login" tabindex="-1" aria-disabled="true">로그인</a>
+          </li>
+        </ul>
+
+      </div>
+      {% endif %}
+    </nav>
+    <div class="row mt-2">
+      <div class="col-12">
+        <nav>
+          <ul class="pagination justify-content-center">
+            {% if posts.has_previous %}
+            <li class="page-item"> 
+              <a class="page-link" href="?p={{ posts.previous_page_number }}">이전으로</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#">이전으로</a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+              <a class="page-link" href="#">{{post.number}} / {{post.paginator.num_pages }}</a>
+            </li>
+            {% if posts.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?p={{ posts.next_page_number }}">다음으로</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#">다음으로</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  
+    {% block contents %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>

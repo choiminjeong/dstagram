@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="row">
+    <div class="col-12">
+        <a href="/post/" >목록으로</a>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card-columns">
+            <div class="card" style="width: 100%;">
+
+                <img src="{{post.imgurl}}" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{post.contents}}</h5>
+                    <p class="card-text">by {{post.writer}}</p>
+                    <p class="card-text">created : {{post.registered_dttm|date:'Y-m-d H:i'}}</p>
+                    <p class="card-text">Tags : {{post.tags.all|join:", " }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
