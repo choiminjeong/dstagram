@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
 from .forms import RegisterForm, LoginForm
