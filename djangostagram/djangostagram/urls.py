@@ -15,16 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dsuser.views import index, RegisterView, LoginView
-from post.views import PostList, PostUpload , PostDetail
+from dsuser.views import  post_list, RegisterView, LoginView, logout 
+from post.views import  PostUpload , post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    # path('', index),
+    path('', post_list),
+
     path('user/register/', RegisterView.as_view()),
     path('user/login/', LoginView.as_view()),
-    path('user/logout/', PostList.as_view()),
-    path('post/', PostList.as_view()),
+    path('user/logout/', logout),
+    # path('post/', Timeline.as_view()),
+    # path('', Timeline.as_view()),
     path('upload/', PostUpload.as_view()),
-    path('post/<int:pk>/', PostDetail.as_view())
+    path('post/<int:pk>/', post_detail)
 ]
