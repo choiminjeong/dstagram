@@ -18,19 +18,20 @@ class UploadForm(forms.Form):
     tags = forms.CharField(
         required=False, label="태그")
 
+    
     def clean(self):
         cleaned_data = super().clean()
         imgurl = cleaned_data.get('imgurl')
         contents = cleaned_data.get('contents')
-        # tags = cleaned_data.get('tags').split(',')
+        tags = cleaned_data.get('tags')
        
         
-        if imgurl and contents:
-            post = Post(
-                imgurl=imgurl,
-                contents=contents
-            )
-            post.save()
+        # if imgurl and contents:
+        #     post = Post(
+        #         imgurl=imgurl,
+        #         contents=contents
+        #     )
+        #     post.save()
 
             # for tag in tags:
             #     if not tag:
@@ -38,7 +39,7 @@ class UploadForm(forms.Form):
 
             #     _tag, _ = Tag.objects.get_or_create(name=tag)
             #     post.tags.add(_tag) 
-        # if not (imgurl and contents and tags):
-        #     self.add_error('imgurl', '값이 없습니다')
-        #     self.add_error('contents', '값이 없습니다')
+        if not (imgurl and contents and tags):
+            self.add_error('imgurl', '값이 없습니다')
+            self.add_error('contents', '값이 없습니다')
         
