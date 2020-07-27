@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Post(models.Model):
     imgurl = models.CharField(max_length=128,
@@ -14,7 +13,6 @@ class Post(models.Model):
     
     def __str__(self):
         return self.writer
-
 
     class Meta:
         db_table = 'djangostagram_post'
