@@ -38,14 +38,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link" href="/">타임라인 </a>
+            <a class="nav-link" href="{% url 'timeline' %}">타임라인 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/logout/">로그아웃</a>
+            <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="/upload" tabindex="-1" aria-disabled="true">글작성</a>
+            <a class="nav-link " href="{% url 'upload' %}" tabindex="-1" aria-disabled="true">글작성</a>
           </li>
         </ul>
 
@@ -54,14 +54,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
-            <a class="nav-link" href="/post">타임라인 <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'timeline' %}">타임라인 <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/register">회원가입</a>
+            <a class="nav-link" href="{% url 'register' %}">회원가입</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="/user/login" tabindex="-1" aria-disabled="true">로그인</a>
+            <a class="nav-link " href="{% url 'login' %}" tabindex="-1" aria-disabled="true">로그인</a>
           </li>
         </ul>
 
