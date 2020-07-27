@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.hashers import check_password, make_password
 from .models import Dsuser
 
+
 class RegisterForm(forms.Form):
     userid = forms.CharField(
          error_messages={
@@ -47,14 +48,9 @@ class RegisterForm(forms.Form):
                 )
                 dsuser.save()
 
-  
-
-
-
-
 class LoginForm(forms.Form):
     userid = forms.CharField(
-         error_messages={
+        error_messages={
             'required': '아이디를 입력해주세요.'
         },
         max_length=32, label='아이디'
