@@ -2,6 +2,7 @@ from django import forms
 from .models import Post
 from tag.models import Tag
 
+
 class UploadForm(forms.Form):
     imgurl = forms.CharField(
         error_messages={
@@ -24,9 +25,3 @@ class UploadForm(forms.Form):
         contents = cleaned_data.get('contents')
         tags = cleaned_data.get('tags')
        
-        
-     
-        if not (imgurl and contents and tags):
-            self.add_error('imgurl', '값이 없습니다')
-            self.add_error('contents', '값이 없습니다')
-        
