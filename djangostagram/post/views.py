@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
-from django.utils.decorators import method_decorator
-from dsuser.decorators import login_required
+from django.http import Http404
 from .forms import UploadForm
 from dsuser.models import Dsuser
 from .models import Post
@@ -10,15 +9,6 @@ from tag.models import Tag
 
 
 
-# Create your views here.
-
-
-# class PostList(ListView):
-#     model = Post
-#     template_name = 'post.html'
-#     context_object_name = 'post_list'
-
-@method_decorator(login_required, name='dispatch')
 class PostUpload(FormView):
     template_name = 'post_upload.html'
     form_class = UploadForm
@@ -49,10 +39,6 @@ class PostUpload(FormView):
 
     
 
-# class PostDetail(DetailView):
-#     template_name = 'Post_detail.html'
-#     queryset = Post.objects.all()
-#     context_object_name = 'post'
 
     
 def post_detail(request, pk):
