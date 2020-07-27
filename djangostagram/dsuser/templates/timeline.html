@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% if request.session.user %}
+<div class="row mt-2">
+  <div class='col-12'>
+   <h1>Hello , {{ userid }}</h1>
+  </div>
+</div> 
+{% endif %}
+
+{% for post in posts %}
+<div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card">   
+      <img src="{{post.imgurl}}" class="card-img-top" alt="...">      
+      <div class="card-body">
+        <h5 class="card-title"><a href="/post/{{post.id}}" style="text-decoration: none;">{{post.contents}}</a></h5>
+        <p class="card-text">by {{post.writer}}</p>
+        <p class="card-text">created : {{post.registered_dttm|date:'Y-m-d H:i'}}</p>
+      </div>      
+    </div>
+  </div>
+</div>
+  {% endfor %}
+
+  
+
+  <div class="row mt-2">
+    <div class="col-12">
+      <nav>
+        <ul class="pagination justify-content-center">
+          {% if posts.has_previous %}
+          <li class="page-item"> 
+            <a class="page-link" href="?p={{ posts.previous_page_number }}">이전으로</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#">이전으로</a>
+          </li>
+          {% endif %}
+          <li class="page-item active">
+            <a class="page-link" href="#">{{posts.number}} / {{posts.paginator.num_pages }}</a>
+          </li>
+
+          {% if posts.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?p={{ posts.next_page_number }}">다음으로</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#">다음으로</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
