@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Dsuser(models.Model):
     userid = models.CharField(max_length=32,
