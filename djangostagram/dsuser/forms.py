@@ -47,17 +47,7 @@ class RegisterForm(forms.Form):
                 )
                 dsuser.save()
 
-        # if userid and password:
-        #     try:
-        #         dsuser = Dsuser.objects.get(userid=userid)
-        #     except Dsuser.DoesNotExist:
-        #         self.add_error('userid', '아이디가 없습니다')
-        #         return
-                
-        #     if not check_password(password, dsuser.password):
-        #         self.add_error('password', '비밀번호를 틀렸습니다')
-        #     else:
-        #         self.user_id
+  
 
 
 
