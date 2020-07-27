@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
-from django.views.generic import ListView
 from .forms import RegisterForm, LoginForm
-from django.core.paginator import Paginator
-from post.models import Post
-
 
 
 class RegisterView(FormView):
@@ -29,13 +25,4 @@ def logout(request):
 
 
 
-
-def post_list(request):
-    all_posts = Post.objects.all().order_by('-registered_dttm')
-    page = request.GET.get('p', 1)
-    paginator = Paginator(all_posts, 4)
-
-    posts = paginator.get_page(page)
-    userid = request.session.get('user')
-    return render(request, 'timeline.html', {'posts': posts ,'userid': userid})
 
