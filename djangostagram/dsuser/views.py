@@ -9,7 +9,7 @@ class RegisterView(FormView):
     success_url = '/'
 
 class LoginView(FormView):
-    template_name = 'Login.html'
+    template_name = 'login.html'
     form_class = LoginForm
     success_url = '/'
 
