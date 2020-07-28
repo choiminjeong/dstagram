@@ -42,7 +42,7 @@ def post_detail(request, pk):
     except Post.DoesNotExist:
         raise Http404('게시글을 찾을 수 없습니다')
 
-    return render(request, 'Post_detail.html', {'post': post})
+    return render(request, 'post_detail.html', {'post': post})
    
 def post_list(request):
     all_posts = Post.objects.all().order_by('-registered_dttm')
